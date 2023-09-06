@@ -1,7 +1,7 @@
 def lintChecks() {
         sh "echo Installing JSlist"
         sh "npm i jslint"
-        sh "echo starting linkChecks ......"
+        sh "echo starting linkChecks for ${COMPONENT}"
         sh "node_modules/jslint/bin/jslint.js server.js || true"
         sh "echo linkChecks completed"
 }
