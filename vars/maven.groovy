@@ -15,7 +15,7 @@ def call() {
                     }
                 }
             }
-            stage('Generating Artifacts') {
+            stage('Code Compile') {
                 steps {
                     sh "echo Generating Artifiacts for $COMPONENT"
                     sh "mvn clean compile"
