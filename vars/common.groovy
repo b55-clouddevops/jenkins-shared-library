@@ -6,8 +6,6 @@ def sonarChecks() {
     sh "echo ${COMPONENT} Sonar Checks  are completed"
 }
 
-
-
 def lintChecks() {
         sh "echo starting linkChecks for ${COMPONENT}"
         sh "mvn checkstyle:check || true"
