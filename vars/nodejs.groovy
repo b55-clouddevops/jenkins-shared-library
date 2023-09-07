@@ -24,6 +24,7 @@ def call() {
             stage('Sonar Checks') {
                 steps {
                     script {
+                            ARGS="-Dsonar.sources=."
                             common.sonarChecks()
                         }
                     }
