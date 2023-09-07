@@ -8,7 +8,11 @@ def lintChecks() {
 
 def call() {
     pipeline {
-        agent any 
+        agent any
+        environment {
+            SONAR_URL = "172.31.81.131"
+            SONAR_CRED  = credentials('SONAR_CRED')
+        }
         stages {
             stage('Lint Checks') {
                 steps {
@@ -23,6 +27,12 @@ def call() {
                     sh "npm install"
                     }
                 }
+            stage('Sonar Checks') {
+                steps {
+                    sh "env"
+                    sh "sonar-scanner -Dsonar.host.url=http://${SONAR_URL}:9000/ -Dsonar.sources=. -Dsonar.projectKey=${COMPONENT} -Dsonar.login=${SONAR_CRED_USR} -Dsonar.password=${SONAR_CRED_PSW}"
+                }
+            }
             }
         }
     }
