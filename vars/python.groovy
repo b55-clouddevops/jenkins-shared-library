@@ -24,6 +24,11 @@ def call() {
                     sh "echo ${COMPONENT} Sonar Checks  are completed"
                     }
                 }
+            stage('Generating Artifacts') {
+                steps {
+                    sh "echo Artifact Generation Complete"
+                    }
+                }
+            }
         }
     }
-}
