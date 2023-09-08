@@ -70,7 +70,7 @@ def call() {
                 }
                 steps {
                     sh '''
-curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://localhost:8081/repository/maven-releases/org/foo/1.0/foo-1.0.pom
+                        curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip
                     ''' 
                     }
                 }
