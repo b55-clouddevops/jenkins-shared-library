@@ -54,6 +54,7 @@ def call() {
             stage('Generating Artifacts') {
                 steps {
                     sh "echo Generating Artifiacts...."
+                    sh "env"
                     sh "npm install"
                     }
                 }
