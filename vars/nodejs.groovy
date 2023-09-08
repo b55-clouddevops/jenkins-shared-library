@@ -52,6 +52,9 @@ def call() {
                 }
             }
             stage('Generating Artifacts') {
+                when {
+                    expression { env.TAG_NAME != null }
+                }
                 steps {
                     sh "echo Generating Artifiacts...."
                     sh "env"
@@ -59,6 +62,9 @@ def call() {
                     }
                 }
             stage('Uploading Artifacts') {
+                when {
+                    expression { env.TAG_NAME != null }
+                }
                 steps {
                     sh "echo Uploading Artifiacts...."
                     }
