@@ -57,6 +57,11 @@ def call() {
                     sh "npm install"
                     }
                 }
+            stage('Uploading Artifacts') {
+                steps {
+                    sh "echo Uploading Artifiacts...."
+                    }
+                }
             }
         }
     }
