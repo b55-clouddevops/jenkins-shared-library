@@ -35,3 +35,18 @@ The `vars` directory hosts script files that are exposed as a variable in Pipeli
 3) When we run the job against a TAG, only during that time, I want artifacts should be created and should be pushed to Nexus.
 
 ```
+
+
+>>> What type of obejcts are supposed to stored where ?
+
+```
+1) Code    : Plain Text : Version Controlling  : GitHub 
+2) Binary  : Artifacts  : Binary Storage [vss] : JFrog / Nexus
+```
+
+>>> What is Allow Redploy In Nexus repository ?
+
+```
+This ensure once a artifact is published, it will be never be overridden.
+
+```
