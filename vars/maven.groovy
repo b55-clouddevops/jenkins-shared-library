@@ -1,9 +1,11 @@
-def lintChecks() {
-        sh "echo starting linkChecks for ${COMPONENT}"
-        sh "mvn checkstyle:check || true"
-        sh "echo linkChecks completed for ${COMPONENT}"
+def call() {
+    node {
+        common.lintChecks()
+        common.sonarChecks()
+    }
 }
 
+/*
 def call() {
     pipeline {
         agent any 
@@ -74,3 +76,4 @@ def call() {
             }
         }
     }
+*/
