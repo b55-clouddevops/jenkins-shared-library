@@ -55,6 +55,17 @@ def call() {
                     }
                 }
             }
+            stage('Check The Release') {
+                when {
+                    expression { env.TAG_NAME != null }
+                }
+                steps {
+                    script {
+                        env.UPLOAD_STATUS=sh(returnStdout: true, script: "curl -L -s http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip || true")
+                        print UPLOAD_STATUS
+                    }
+                }
+            }
             stage('Generating Artifacts') {
                 steps {
                     sh "echo Artifact Generation Complete"
