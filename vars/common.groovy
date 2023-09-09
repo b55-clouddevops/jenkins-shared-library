@@ -79,13 +79,20 @@ def artifacts() {
                 }
                 else {
                     sh "echo Generating Artifiacts...."
-                    cd static/
+                    sh "cd static/"
                     sh "zip -r ../${COMPONENT}-${TAG_NAME}.zip *"
 
                 }      
             }
+        stage('Uploading the artifacts') {
+            withCredentials([usernamePassword(credentialsId: 'NEXUS_CRED', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
+                    sh "echo Uploading ${COMPONENT} artifact to nexus"
+                    sh "curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.22.243:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+                    sh "echo Uploading ${COMPONENT} artifact to nexus is completed"
+            }                        
         }
     }
+}
 
 
 
