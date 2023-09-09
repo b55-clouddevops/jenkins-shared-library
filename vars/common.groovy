@@ -38,7 +38,7 @@ def testCases() {
                 stage('Unit Testing') {
                     steps {
                         sh "echo Starting Unit Testing"
-                    sh "echo Unit Testing Completed"
+                        sh "echo Unit Testing Completed"
                 }
             }
                 stage('Integration Testing') {
