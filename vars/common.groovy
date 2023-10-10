@@ -78,9 +78,11 @@ def artifacts() {
                     sh "zip -r ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt"
                 }
                 else {
-                    sh "echo Generating Artifiacts...."
-                    sh "cd static/"
-                    zip -r ../${COMPONENT}-${TAG_NAME}.zip *     
+                    sh ''' 
+                        echo Generating Artifiact
+                        cd static/"
+                        zip -r ../${COMPONENT}-${TAG_NAME}.zip *
+                    '''
 
                 }      
             }
