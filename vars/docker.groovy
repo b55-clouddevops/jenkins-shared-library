@@ -29,8 +29,9 @@ def call() {
                     '''
 
                 }
-                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 834725375088.dkr.ecr.us-east-1.amazonaws.com"   
+                  
                 sh "docker build -t 834725375088.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME} ."
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 834725375088.dkr.ecr.us-east-1.amazonaws.com"
                 sh "docker push 834725375088.dkr.ecr.us-east-1.amazonaws.com/catalogue:latest"
             }
         }    
